@@ -9,7 +9,7 @@ CRUD por consola para gestionar un catálogo de productos, usando listas, mapas,
 ## Cómo ejecutar
 
 ```bash
-dart run bin/main.dart
+dart run 
 ```
 
 ## Funcionalidad
