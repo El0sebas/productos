@@ -1,4 +1,4 @@
-name: taller1_dart_gitflow
+name: main
 description: CRUD de catalogo de productos por consola.
 publish_to: 'none'
 environment:
