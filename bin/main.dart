@@ -135,5 +135,8 @@ int? seleccionarIndice(String prompt) {
 }
 
 void eliminarProducto() {
-  print('(pendiente)');
+  final indice = seleccionarIndice('Numero del producto a eliminar: ');
+  if (indice == null) return;
+  final eliminado = productos.removeAt(indice);
+  print('Producto "${eliminado['nombre']}" eliminado.');
 }
