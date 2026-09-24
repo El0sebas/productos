@@ -41,7 +41,38 @@ void mostrarMenu() {
 }
 
 void agregarProducto() {
-  print('(pendiente)');
+  final nombre = leerTexto('Nombre del producto: ');
+  final precio = leerDouble('Precio: ');
+  final cantidad = leerEntero('Cantidad disponible: ');
+  productos.add({'nombre': nombre, 'precio': precio, 'cantidad': cantidad});
+  print('Producto agregado.');
+}
+
+String leerTexto(String prompt) {
+  while (true) {
+    stdout.write(prompt);
+    final valor = stdin.readLineSync()?.trim() ?? '';
+    if (valor.isNotEmpty) return valor;
+    print('El valor no puede estar vacio.');
+  }
+}
+
+double leerDouble(String prompt) {
+  while (true) {
+    stdout.write(prompt);
+    final valor = double.tryParse(stdin.readLineSync()?.trim() ?? '');
+    if (valor != null && valor >= 0) return valor;
+    print('Ingresa un numero valido (>= 0).');
+  }
+}
+
+int leerEntero(String prompt) {
+  while (true) {
+    stdout.write(prompt);
+    final valor = int.tryParse(stdin.readLineSync()?.trim() ?? '');
+    if (valor != null && valor >= 0) return valor;
+    print('Ingresa un numero entero valido (>= 0).');
+  }
 }
 
 void listarProductos() {
