@@ -1,0 +1,5 @@
+name: taller1_dart_gitflow
+description: CRUD de catalogo de productos por consola.
+publish_to: 'none'
+environment:
+  sdk: ^3.0.0
