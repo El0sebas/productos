@@ -76,7 +76,14 @@ int leerEntero(String prompt) {
 }
 
 void listarProductos() {
-  print('(pendiente)');
+  if (productos.isEmpty) {
+    print('No hay productos registrados.');
+    return;
+  }
+  for (var i = 0; i < productos.length; i++) {
+    final p = productos[i];
+    print('${i + 1}. ${p['nombre']} - \$${p['precio']} - cant: ${p['cantidad']}');
+  }
 }
 
 void actualizarProducto() {
