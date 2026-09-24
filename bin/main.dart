@@ -87,7 +87,51 @@ void listarProductos() {
 }
 
 void actualizarProducto() {
-  print('(pendiente)');
+  final indice = seleccionarIndice('Numero del producto a actualizar: ');
+  if (indice == null) return;
+  final p = productos[indice];
+
+  stdout.write('Nuevo nombre (Enter para mantener "${p['nombre']}"): ');
+  final nombre = stdin.readLineSync()?.trim() ?? '';
+  if (nombre.isNotEmpty) p['nombre'] = nombre;
+
+  stdout.write('Nuevo precio (Enter para mantener ${p['precio']}): ');
+  final precioTexto = stdin.readLineSync()?.trim() ?? '';
+  if (precioTexto.isNotEmpty) {
+    final precio = double.tryParse(precioTexto);
+    if (precio != null && precio >= 0) {
+      p['precio'] = precio;
+    } else {
+      print('Precio invalido, se mantiene el anterior.');
+    }
+  }
+
+  stdout.write('Nueva cantidad (Enter para mantener ${p['cantidad']}): ');
+  final cantidadTexto = stdin.readLineSync()?.trim() ?? '';
+  if (cantidadTexto.isNotEmpty) {
+    final cantidad = int.tryParse(cantidadTexto);
+    if (cantidad != null && cantidad >= 0) {
+      p['cantidad'] = cantidad;
+    } else {
+      print('Cantidad invalida, se mantiene la anterior.');
+    }
+  }
+
+  print('Producto actualizado.');
+}
+
+int? seleccionarIndice(String prompt) {
+  if (productos.isEmpty) {
+    print('No hay productos registrados.');
+    return null;
+  }
+  stdout.write(prompt);
+  final numero = int.tryParse(stdin.readLineSync()?.trim() ?? '');
+  if (numero == null || numero < 1 || numero > productos.length) {
+    print('Numero fuera de rango.');
+    return null;
+  }
+  return numero - 1;
 }
 
 void eliminarProducto() {
